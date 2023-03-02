@@ -1,6 +1,3 @@
-<?php
-    session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -34,15 +31,8 @@
             </div>
             <div class="row">
                 <div class="col-sm-12 col-md-3 col-lg-3">
-                <?php
-                    if($_SESSION["Status"] != "ADMIN")
-                    {
-                        header("location:index.php");
-                    }else{
-                        echo "<strong>".$_SESSION["UserName"]."</strong>";
-                    }
-
-                ?>
+                    <p>Login Area</p>
+                </div>  
                 <div class="col-sm-12 col-md-9 col-lg-9">
                     <h4>เพิ่มข้อมูลโครงงาน</h4>
                     <?php

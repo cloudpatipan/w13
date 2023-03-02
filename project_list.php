@@ -46,7 +46,12 @@
                         <tbody>
                             <?php
                                 include 'connectdb.php';
-                                $sql =  'SELECT * FROM project order by prj_id';
+                                $sql =  'select prj_id,prj_name_th,prj_name_en,ptt_name,lct_fname,lct_lname,pst_name from project 
+                                JOIN project_status on prj_stt_id=pst_id
+                                JOIN project_type on prj_ppt_id=ptt_id 
+                                JOIN lecturer on prj_lct_id=lct_id';
+                                
+                                
                                 $result = mysqli_query($conn,$sql);
                                 while (($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) != NULL) {
                                     echo '<tr>';
@@ -57,13 +62,12 @@
                                     echo '<td>' . $row['ptt_name'] . '</td>';
                                     echo '<td>' . $row['lct_fname'] . '</td>';
                                     echo '<td>' . $row['lct_lname'] . '</td>';
-                                    echo '<td>' . $row['std_fname'] . '</td>';
-                                    echo '<td>' . $row['std_lname'] . '</td>';
-                                    echo '<td>' . $row['tls_name'] . '</td>';
+
+                                    
                                     echo '<td>';
                             ?>
                                 <a href="project_edit.php?prj_id=<?php echo $row['prj_id'];?>" class="btn btn-warning">แก้ไข</a>
-                                <a href="JavaScript:if(confirm('ยืนยันการลบ')==true){window.location='program_delete.php?prj_id=<?php echo $row["prj_id"];?>'}" class="btn btn-danger">ลบ</a>
+                                <a href="JavaScript:if(confirm('ยืนยันการลบ')==true){window.location='project_delete.php?prj_id=<?php echo $row["prj_id"];?>'}" class="btn btn-danger">ลบ</a>
                             <?php
                                     echo '</td>';
                                     echo '</tr>';

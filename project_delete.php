@@ -23,7 +23,7 @@
         <?php
             include 'connectdb.php';
             $prj_id = $_GET['prj_id'];
-            $sql = "delete from project_all where prj_id='$prj_id'";
+            $sql = "delete from project where prj_id='$prj_id'";
             $result = mysqli_query($conn,$sql);
             if($result){
                 echo 'ลบแล้ว';
